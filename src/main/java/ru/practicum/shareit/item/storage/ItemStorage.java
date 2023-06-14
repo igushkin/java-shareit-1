@@ -9,7 +9,7 @@ public interface ItemStorage {
 
     List<Item> getItemsByUserId(Integer userId);
 
-    List<Item> findItemByText(String text);
+    List<Item> findAvailableItemsByText(String text);
 
     Item createItem(Item item);
 

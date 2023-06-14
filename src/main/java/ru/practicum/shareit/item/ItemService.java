@@ -35,7 +35,7 @@ public class ItemService {
             return List.of();
         }
 
-        return itemStorage.findItemByText(text);
+        return itemStorage.findAvailableItemsByText(text);
     }
 
     public Item createItem(Integer userId, Item item) {

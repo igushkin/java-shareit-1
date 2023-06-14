@@ -2,11 +2,11 @@ package ru.practicum.shareit.item.storage;
 
 import org.springframework.stereotype.Component;
 import ru.practicum.shareit.item.Item;
-import ru.practicum.shareit.user.User;
-import ru.practicum.shareit.user.dto.UserPatchDto;
 
 import java.security.InvalidParameterException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Component
@@ -31,9 +31,10 @@ public class InMemoryItemStorage implements ItemStorage {
     }
 
     @Override
-    public List<Item> findItemByText(String text) {
+    public List<Item> findAvailableItemsByText(String text) {
         return itemStorage.values()
                 .stream()
+                .filter(x -> x.getAvailable())
                 .filter(x -> x.getName().toLowerCase().contains(text) || x.getDescription().toLowerCase().contains(text))
                 .collect(Collectors.toList());
     }
